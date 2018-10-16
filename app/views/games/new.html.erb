@@ -1,0 +1,24 @@
+<style>
+@import url('https://fonts.googleapis.com/css?family=Pacifico');
+</style>
+
+<div>
+
+  <h1>Let's play a game</h1>
+
+  <div class="letters">
+    <% @letters.each do |letter| %>
+    <div class="letter"><%= letter.capitalize %></div>
+    <%end%>
+  </div>
+
+  <div class="form">
+    <p>What is the longest word you can find ?</p>
+    <form action="/score" method="post">
+      <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+      <%= hidden_field_tag :grid, @letters %>
+      <input type="text" name="word" placeholder="Press 'play' button">
+      <input type="submit" value="Play">
+    </form>
+  </div>
+</div>
